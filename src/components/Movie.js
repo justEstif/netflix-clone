@@ -1,0 +1,32 @@
+import React, { useState } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+
+const Movie = ({ movie, idx }) => {
+  const [like, setLike] = useState(false);
+  return (
+    <div
+      key={idx}
+      className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative pr-3">
+      <img
+        className="w-full h-auto block"
+        src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+        alt={movie?.title}
+      />
+      <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 hover:opacity-70 duration-300 opacity-0 text-white">
+        <p className="whitespace-normal text-s md:text-sm font-bold flex justify-center items-center h-full text-center tracking-widest">
+          {movie?.title}
+        </p>
+        <p>
+          {" "}
+          {like ? (
+            <FaHeart className="absolute top-4 left-4 text-gray-300" />
+          ) : (
+            <FaRegHeart className="absolute top-4 left-4 text-gray-300" />
+          )}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Movie;
