@@ -4,15 +4,23 @@ import requests from "../Requests";
 
 const Main = () => {
   const [movies, setMovies] = useState([]);
-  const movie = movies[Math.floor(Math.random() * movies.length)];
-
+  const [movie, setMovie] = useState();
+  const randomMovie = () => movies[Math.floor(Math.random() * movies.length)];
   const truncateString = (str) => `${str?.split(" ", 20).join(" ")} ...`;
 
   useEffect(() => {
     axios.get(requests.requestPopular).then((response) => {
       setMovies(response.data.results);
     });
+    setMovie(randomMovie());
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMovie(randomMovie());
+    }, 20000);
+    return () => clearInterval(interval);
+  });
 
   return (
     <div className="w-full h-[600px] text-white">
