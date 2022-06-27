@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-const Movie = ({ movie, idx }) => {
+const Movie = ({ movie }) => {
   const [like, setLike] = useState(false);
   return (
-    <div
-      key={idx}
-      className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative pr-3">
+    <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative pr-3">
       <img
         className="w-full h-auto block"
         src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
