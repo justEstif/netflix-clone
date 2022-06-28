@@ -2,23 +2,24 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import requests from "../Requests";
 
+const randomEl = (arr) => arr[Math.floor(Math.random() * arr.length)];
+const truncateString = (str) => `${str?.split(" ", 20).join(" ")} ...`;
+
 const Main = () => {
   const [movies, setMovies] = useState([]);
   const [movie, setMovie] = useState();
-  const randomMovie = () => movies[Math.floor(Math.random() * movies.length)];
-  const truncateString = (str) => `${str?.split(" ", 20).join(" ")} ...`;
 
   useEffect(() => {
     axios.get(requests.requestPopular).then((response) => {
       setMovies(response.data.results);
+      setMovie(randomEl(response.data.results));
     });
-    setMovie(randomMovie());
   }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setMovie(randomMovie());
-    }, 20000);
+      setMovie(() => randomEl(movies));
+    }, 30000);
     return () => clearInterval(interval);
   });
 
