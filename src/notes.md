@@ -16,24 +16,22 @@
   - context: user and firebase context
   - helpers: protected routes
   - lib: firebase
-  - services: firebase functions
   - hooks: custom hooks
+  - services: firebase functions
   - styles: tailwind
-  - styles: tailwind
+  - pages:
 
 - firebase
 
   - firestore
     - db structure
       - collections
-        - users: stores reference to photos
-        - photos
+        - users: stores reference to the movies
   - firebase authentication
     - using email and password
 
 - used
 
-  - PropTypes
   - Custom Hooks, Context API
   - Firebase (auth, firestore)
   - Lazy loading + Skeleton
@@ -41,10 +39,8 @@
 - dependencies
 
   - `firebase`
-  - `date-fns` for date formatting
   - `react-loading-skeleton` animated loading screens
   - `react-router-dom` different pages
-  - `prop-types` type checking
 
 ## Making the context
 
