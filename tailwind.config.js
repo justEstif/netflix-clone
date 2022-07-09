@@ -1,15 +1,7 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {
-      fontFamily: {
-        bebas: ["Bebas Neue", "cursive"],
-      },
-    },
+    extend: {},
   },
-  plugins: [
-    require("tailwind-scrollbar-hide"),
-    require("tailwind-scrollbar"),
-    require("@tailwindcss/forms"),
-  ],
+  plugins: [],
 };
