@@ -1,12 +1,21 @@
-import React, { FunctionComponent } from "react";
-
+import { FunctionComponent, Fragment, lazy, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PageRoutes from "./constants/Page.Routes";
 interface AppProps {}
+
+const LandingPage = lazy(() => import("./pages/LandingPage/LandingPage"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage"));
 
 const App: FunctionComponent<AppProps> = () => {
   return (
-    <div className="bg-black">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </div>
+    <Router>
+      <Suspense fallback={<Fragment></Fragment>}>
+        <Routes>
+          <Route path={PageRoutes.Landing} element={<LandingPage />} />
+          <Route path={PageRoutes.SignUp} element={<SignUpPage />} />
+        </Routes>
+      </Suspense>
+    </Router>
   );
 };
 
