@@ -1,9 +1,8 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./styles/tailwind.css";
 
-import FirebaseContext from "./context/firebaseContext";
+import FirebaseContext from "./context/FirebaseContext";
 import { db, auth } from "./lib/firebase.config";
 
 // making html, body, root full screen
