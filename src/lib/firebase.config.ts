@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { IFirebaseConfig } from "../helpers/Interfaces";
+import { IFirebaseConfig } from "../interfaces/FirebaseInterfaces";
 
 const firebaseConfig: IFirebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
