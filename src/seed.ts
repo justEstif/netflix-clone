@@ -6,14 +6,14 @@ const seedDatabase = (db: Firestore): void => {
     {
       userId: "1",
       username: "steve",
-      emailAddress: "steve@test.com",
+      userEmail: "steve@test.com",
       liked: [],
       watched: [],
     },
     {
       userId: "2",
       username: "steven",
-      emailAddress: "steven@test.com",
+      userEmail: "steven@test.com",
       liked: [],
       watched: [],
     },
