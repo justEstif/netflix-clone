@@ -3,16 +3,13 @@ import { useLocation } from "react-router-dom";
 interface ISignUpPage {
   children?: React.ReactNode;
 }
-interface ILocation {
-  state: {
-    useEmail: string;
-  };
+interface CustomizedState {
+  userEmail: string;
 }
 
 const SignUpPage: FunctionComponent<ISignUpPage> = () => {
-  const location = useLocation().state as { userEmail: string };
-  const { userEmail } = location;
-
+  const location = useLocation();
+  const { userEmail } = location.state as CustomizedState;
   return (
     <Fragment>
       {userEmail}
