@@ -15,10 +15,10 @@ describe("Testing the landing page", () => {
     render(<MockLandingPage />);
     expect(screen.getByText(/Netflix/i)).toBeInTheDocument();
   });
-  it("checking for 3 link elements", () => {
+  it("checking for 2 link elements", () => {
     render(<MockLandingPage />);
     const linkElements = screen.getAllByRole("link");
-    expect(linkElements.length).toBe(4);
+    expect(linkElements.length).toBe(2);
   });
   it("checking if the title links to landing page", () => {
     render(<MockLandingPage />);
@@ -30,12 +30,12 @@ describe("Testing the landing page", () => {
     const titleLink = screen.getByText("Sign in");
     expect(titleLink).toHaveAttribute("href", "/sign-in");
   });
-  it("checking if the sign in links to sign up page", () => {
-    render(<MockLandingPage />);
-    const titleLink = screen.getByText("Sign up");
-    expect(titleLink).toHaveAttribute("href", "/sign-up");
-  });
   it.todo(
-    "the get stared takes to the sign up page with the input held in state"
+    "pass the email to sign up page, when clicking the get started button"
+  );
+  it.todo("Navigate to the sign in page if email is registered", () => {});
+  it.todo("Navigate to the sign up page if email is not registered");
+  it.todo(
+    "checking if adding a email that exists to the input field navigates to the sign in page"
   );
 });
