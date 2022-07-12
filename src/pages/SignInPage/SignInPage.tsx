@@ -7,6 +7,12 @@ interface CustomizedState {
   userEmail: string;
 }
 const SignInPage: FunctionComponent<SignInPageProps> = () => {
+
+  const handleSubmit = (e:React.FormEvent) => {
+    e.preventDefault()
+    console.log("You thought")
+  }
+
   useEffect(() => {
     if (userEmailFromInput) {
       setUserEmail(userEmailFromInput);
