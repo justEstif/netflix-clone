@@ -7,8 +7,21 @@ interface CustomizedState {
   userEmail: string;
 }
 const SignInPage: FunctionComponent<SignInPageProps> = () => {
-  const location = useLocation();
-  const { userEmail } = location.state as CustomizedState;
+  useEffect(() => {
+    if (userEmailFromInput) {
+      setUserEmail(userEmailFromInput);
+      // to stop TS error
+      if (passwordInputRef.current != null) {
+        passwordInputRef.current.focus();
+      }
+    } else {
+      // to stop TS error
+      if (userEmailInputRef.current != null) {
+        userEmailInputRef.current.focus();
+      }
+    }
+  }, []);
+
   return (
     <div className="h-full w-full bg-netflix-background bg-cover bg-center">
       <div className="top-0 left-0 fixed w-full h-screen bg-black/40">
