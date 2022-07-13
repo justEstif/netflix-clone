@@ -8,8 +8,16 @@ interface CustomizedState {
 }
 
 const SignUpPage: FunctionComponent<ISignUpPage> = () => {
-  const location = useLocation();
-  const { userEmail } = location.state as CustomizedState;
+  const [userEmail, setUserEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const { userEmail: userEmailFromInput } = useLocation()
+    .state as CustomizedState;
+  const navigate = useNavigate()
+
+  const userEmailInputRef = useRef<HTMLInputElement>(null);
+  const passwordInputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     // focus on input based on passed prop
     if (userEmailFromInput) {
