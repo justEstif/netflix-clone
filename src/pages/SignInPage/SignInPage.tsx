@@ -101,7 +101,11 @@ const SignInPage: FunctionComponent<SignInPageProps> = () => {
               <div className="py-4">
                 <p className="text-gray-400">
                   New to Netflix?{" "}
-                  <span className="text-white">Sign up now.</span>
+                  <span className="text-white">
+                    <Link to={PageRoutes.SignUp} state={{ userEmail: null }}>
+                      Sign Up
+                    </Link>
+                  </span>
                 </p>
               </div>
 
