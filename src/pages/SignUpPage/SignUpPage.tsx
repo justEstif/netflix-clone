@@ -10,6 +10,20 @@ interface CustomizedState {
 const SignUpPage: FunctionComponent<ISignUpPage> = () => {
   const location = useLocation();
   const { userEmail } = location.state as CustomizedState;
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("")
+    const handleSignUp = async () => {
+      const { response, message } = await signUpUser(userEmail, password)
+      if (response) {
+        navigate(PageRoutes.Home)
+      } else {
+        setError(message);
+      }
+    }
+    handleSignUp()
+  }
+
   return (
     <div className="h-full w-full bg-netflix-background bg-cover bg-center">
       <div className="top-0 left-0 fixed w-full h-screen bg-black/40">
