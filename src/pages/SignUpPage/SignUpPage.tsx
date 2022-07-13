@@ -10,6 +10,20 @@ interface CustomizedState {
 const SignUpPage: FunctionComponent<ISignUpPage> = () => {
   const location = useLocation();
   const { userEmail } = location.state as CustomizedState;
+  useEffect(() => {
+    // focus on input based on passed prop
+    if (userEmailFromInput) {
+      setUserEmail(userEmailFromInput);
+      if (passwordInputRef.current != null) {
+        passwordInputRef.current.focus();
+      }
+    } else {
+      if (userEmailInputRef.current != null) {
+        userEmailInputRef.current.focus();
+      }
+    }
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("")
