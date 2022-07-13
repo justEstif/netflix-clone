@@ -8,7 +8,7 @@ export const requests = {
   requestUpcoming: `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1`,
 };
 
-export const getMoviesFromUrl = async (url:string) => {
+export const getMoviesFromUrl = async (url: string) => {
   const response = await fetch(url)
   const responseJson = await response.json()
   const results = await responseJson.results
