@@ -57,13 +57,13 @@ const SignInPage: FunctionComponent<SignInPageProps> = () => {
           <section className="flex items-center justify-center relative ">
             <div className="bg-black/70 absolute top-10 px-16 py-10 w-full max-w-md">
 
-              <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col gap-10 w-full mb-3">
-
-
+              <form
+                onSubmit={(e) => handleSubmit(e)}
+                className="flex flex-col gap-10 w-full mb-3">
                 <h1 className="text-white text-3xl font-semibold tracking-wider">
                   Sign In
                 </h1>
-
+                {error && <p>{error}</p>}
                 <input
                   value={userEmail}
                   required
@@ -73,21 +73,20 @@ const SignInPage: FunctionComponent<SignInPageProps> = () => {
                   placeholder="Email Address"
                   className="px-5 py-4 rounded bg-gray-400/40 text-gray-200 focus:outline-none focus:border-b-4 border-orange-500 duration-300"
                 />
-
                 <input
                   required
                   ref={passwordInputRef}
+                  value={password}
+                  onChange={({ target }) => setPassword(target.value)}
                   type="password"
                   placeholder="Password"
                   className="px-5 py-4 rounded bg-gray-400/40 text-gray-200 focus:outline-none focus:border-b-4 border-orange-500 duration-300"
                 />
-
                 <button
                   type="submit"
                   className="rounded-md text-xl py-2 bg-red-600 w-full text-white hover:bg-red-700">
                   Sign In
                 </button>
-
               </form>
 
               <div className="py-4">
@@ -100,7 +99,6 @@ const SignInPage: FunctionComponent<SignInPageProps> = () => {
                   </span>
                 </p>
               </div>
-
             </div>
           </section>
         </div>
