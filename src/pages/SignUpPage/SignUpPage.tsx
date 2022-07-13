@@ -1,5 +1,7 @@
-import { Fragment, FunctionComponent } from "react";
-import { useLocation } from "react-router-dom";
+import { FunctionComponent, useEffect, useRef, useState } from "react";
+import { useLocation, Link, useNavigate } from "react-router-dom";
+import PageRoutes from "../../constants/Page.Routes";
+import { signUpUser } from "../../services/firebase";
 interface ISignUpPage {
   children?: React.ReactNode;
 }
@@ -18,6 +20,7 @@ const SignUpPage: FunctionComponent<ISignUpPage> = () => {
 
   const userEmailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     // focus on input based on passed prop
     if (userEmailFromInput) {
@@ -109,3 +112,6 @@ const SignUpPage: FunctionComponent<ISignUpPage> = () => {
 };
 
 export default SignUpPage;
+
+
+
