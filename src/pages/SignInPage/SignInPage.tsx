@@ -88,14 +88,6 @@ const SignInPage: FunctionComponent<SignInPageProps> = () => {
                   Sign In
                 </button>
 
-                <div className="flex justify-between items-center text-gray-400">
-                  <div className="flex justify-between items-center gap-2">
-                    <input type="checkbox" className="" />
-                    <p>Remember Me</p>
-                  </div>
-                  <p>Need Help?</p>
-                </div>
-
               </form>
 
               <div className="py-4">
