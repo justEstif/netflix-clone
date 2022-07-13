@@ -1,5 +1,6 @@
-import { db } from "../lib/firebase.config";
+import { firebase } from "../lib/firebase.config";
 import { collection, query, getDocs, where } from "firebase/firestore";
+const { db, auth } = firebase;
 
 export const userEmailExistsInDB = async (
   userEmail: string
