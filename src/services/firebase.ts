@@ -10,3 +10,22 @@ export const userEmailExistsInDB = async (
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.length > 0;
 };
+export const signInUser = async (userEmail: string, password: string) => {
+  try {
+    const { user } = await signInWithEmailAndPassword(
+      auth,
+      userEmail,
+      password
+    );
+    return {
+      response: true,
+      message: user?.uid,
+    };
+  } catch (err) {
+    const typedError = err as AuthError;
+    return {
+      response: false,
+      message: typedError.code,
+    };
+  }
+};
