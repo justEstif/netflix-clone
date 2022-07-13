@@ -1,8 +1,9 @@
 const PageRoutes = {
   Landing: "/",
+  Home: "/home",
   SignIn: "/sign-in",
   SignUp: "/sign-up",
-  Account: "/p/:username",
+  Account: "/account",
   NotFound: "*",
 };
 export default PageRoutes;
