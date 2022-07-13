@@ -30,7 +30,7 @@ const LandingPage: FunctionComponent<LandingPageProps> = () => {
         <div className="h-full w-full grid grid-rows-navbar-content text-white container mx-auto p-4">
 
           <nav className="flex justify-between">
-            <button className=" shadow-2xl text-red-700 text-5xl uppercase tracking-wider font-bebas">
+            <button className="text-red-700 text-6xl uppercase tracking-wider font-bebas">
               <Link to={PageRoutes.Landing}>Netflix</Link>
             </button>
 
