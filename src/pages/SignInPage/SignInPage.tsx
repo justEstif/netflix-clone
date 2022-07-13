@@ -14,10 +14,6 @@ const SignInPage: FunctionComponent<SignInPageProps> = () => {
   const userEmailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e:React.FormEvent) => {
-    e.preventDefault()
-    console.log("You thought")
-  }
 
   useEffect(() => {
     if (userEmailFromInput) {
@@ -34,6 +30,19 @@ const SignInPage: FunctionComponent<SignInPageProps> = () => {
     }
   }, []);
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("")
+    const handleSignIn = async () => {
+      const { response, message } = await signInUser(userEmail, password);
+      if (response) {
+        navigate(PageRoutes.Home)
+      } else {
+        setError(message);
+      }
+    };
+    handleSignIn();
+  };
   return (
     <div className="h-full w-full bg-netflix-background bg-cover bg-center">
       <div className="top-0 left-0 fixed w-full h-screen bg-black/40">
