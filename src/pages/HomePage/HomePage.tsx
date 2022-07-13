@@ -4,45 +4,52 @@ import PageRoutes from "../../constants/Page.Routes";
 import FirebaseContext from "../../context/FirebaseContext";
 // import UserContext from "../../context/UserContext";
 import { signOut, Auth } from "firebase/auth";
-import Hero from "../../components/Hero"
+import { requests, getMoviesFromUrl } from "../../services/tmdb";
+import UserNavBar from "../../components/UserNavBar";
+import Hero from "../../components/Hero";
+// import Hero from "../../components/Hero"
 
-interface HomeProps { }
+interface HomeProps {}
 
+type Movie = {
+  title?: string;
+  backdrop_path?: string;
+  release_date?: string;
+  overview?: string;
+};
 const Home: FunctionComponent<HomeProps> = () => {
   const firebase = useContext(FirebaseContext);
   const auth = firebase?.auth as Auth;
 
+  const [movies, setMovies] = useState<[]>([]);
+  const [movie, setMovie] = useState<Movie>();
+
+  const truncateString = (str: string | undefined) => {
+    if (typeof str === "string") {
+      return `${str?.split(" ", 20).join(" ")} ...`;
+    }
+  };
+  const randomEl = (arr: []) => arr[Math.floor(Math.random() * arr.length)];
+
+  useEffect(() => {
+    const getMovies = async () => {
+      const popularMovies: [] = await getMoviesFromUrl(requests.requestPopular);
+      setMovies(() => popularMovies);
+      setMovie(() => randomEl(popularMovies));
+    };
+    getMovies();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMovie(randomEl(movies));
+    }, 30000);
+    return () => clearInterval(interval);
+  });
   return (
-    <div className="h-full w-full bg-black">
-      <div className="h-full w-full grid grid-rows-navbar-2-content container mx-auto p-4">
-        <nav className="flex justify-between">
-          <button className=" text-red-700 text-6xl uppercase tracking-wider font-bebas">
-            <Link to={PageRoutes.Landing}>Netflix</Link>
-          </button>
-          <div className="flex items-center gap-5 text-lg text-white">
-            <button className="bg-red-700 py-3 px-7 rounded-md hover:bg-red-800">
-              <Link to={PageRoutes.Account} state={{ userEmail: null }}>
-                Account
-              </Link>
-            </button>
-
-            <button
-              className="bg-gray-700 py-3 px-7 rounded-md hover:bg-gray-800"
-              onKeyDown={({ key }) => key === "Enter" && signOut(auth)}
-              onClick={() => signOut(auth)}>
-              Sign Out
-            </button>
-          </div>
-        </nav>
-
-<Hero />
-
-        <section className="bg-red-300">
-          <div><button>Click THis</button></div>
-          <div>Row</div>
-          <div>Row</div>
-        </section>
-      </div>
+    <div className="h-full w-full bg-black grid grid-rows-hero-content">
+      <Hero />
+      <div className="text-5xl text-white">Hello</div>
     </div>
   );
 };
