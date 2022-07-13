@@ -8,7 +8,7 @@ module.exports = {
       gridTemplateRows: {
         // Complex site-specific row configuration
         "navbar-content": "100px 1fr",
-        "navbar-2-content": "100px 400px 1fr",
+        "navbar-2-content": "100px 600px 1fr",
       },
       fontFamily: {
         bebas: ["Bebas Neue", "cursive"],
