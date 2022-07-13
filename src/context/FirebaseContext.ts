@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import { IFirebaseContextInterface } from "../interfaces/FirebaseInterfaces";
+import { IFirebaseContext } from "../interfaces/FirebaseContext"
 
-const FirebaseContext = createContext<IFirebaseContextInterface | null>(null);
+const FirebaseContext = createContext<IFirebaseContext | null>(null);
 
 export default FirebaseContext;
