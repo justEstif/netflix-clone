@@ -1,14 +1,14 @@
 import { FunctionComponent, Fragment, lazy, Suspense, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PageRoutes from "./constants/Page.Routes";
-
-interface AppProps {}
 import UserContext from "./context/UserContext"
 import useAuthListener from "./hooks/useAuthListener"
+interface AppProps { }
 
 const LandingPage = lazy(() => import("./pages/LandingPage/LandingPage"));
 const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage"));
 const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage"));
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"))
 
 const App: FunctionComponent<AppProps> = () => {
   const { user } = useAuthListener();
