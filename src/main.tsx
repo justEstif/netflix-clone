@@ -3,11 +3,10 @@ import App from "./App";
 import "./styles/tailwind.css";
 
 import FirebaseContext from "./context/FirebaseContext";
-import { db, auth } from "./lib/firebase.config";
+import { firebase } from "./lib/firebase.config";
 
-// making html, body, root full screen
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <FirebaseContext.Provider value={{ db, auth }}>
+  <FirebaseContext.Provider value={firebase}>
     <App />
   </FirebaseContext.Provider>
 );
