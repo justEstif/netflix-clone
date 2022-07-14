@@ -20,9 +20,21 @@ const Hero = () => {
       return `${str?.split(" ", 20).join(" ")} ...`;
     }
   };
-  const randomEl = (arr: []) => arr[Math.floor(Math.random() * arr.length)];
-  const getGenre = (genreIds: number[]) => {
-    // TODO get a string match of the genres
+
+  const randomEl = (arr: Movie[]): Movie => arr[Math.floor(Math.random() * arr.length)];
+  const getGenre = (movie: Movie | undefined) => {
+    const currentMovieGenres = movie?.genre_ids
+    if (currentMovieGenres) {
+      const genresWords = movieGenres.reduce((result: string[], el) => {
+
+        if (currentMovieGenres.includes(el.id)) {
+          const movieGenre: string = el.genre!
+          result.push(movieGenre)
+        }
+        return result
+      }, [])
+      return genresWords.join(", ")
+    }
   };
 
   useEffect(() => {
