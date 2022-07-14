@@ -61,14 +61,14 @@ const Hero = () => {
       className="h-full w-full grid grid-rows-navbar-hero bg-cover bg-no-repeat">
       <UserNavBar />
       <section className="w-full h-full bg-cover bg-top flex items-end container mx-auto p-4">
-        <div className="p-4 max-w-3xl w-full h-3/6 flex flex-col gap-4">
-          <h1 className="text-2xl md:text-5xl font-bold text-white">
+        <div className="p-4 max-w-3xl w-full h-4/6 flex flex-col gap-4">
+          <h1 className="text-3xl md:text-6xl font-bold text-white">
             {movie?.title}
           </h1>
-          <div className="text-white">{}</div>
-          <div className="text-white">Released: {movie?.release_date}</div>
-          <div className="w-full text-white">{movie?.overview}</div>
-          <div className="w-full text-white">Rating: {movie?.vote_average}</div>
+          <div className="text-white text-xl">{getGenre(movie)}</div>
+          <div className="text-white text-xl">Released: {movie?.release_date}</div>
+          <div className="w-full text-white text-xl">{truncateString(movie?.overview)}</div>
+          <div className="w-full text-white text-xl">Rating: {movie?.vote_average}</div>
         </div>
       </section>
     </div>
