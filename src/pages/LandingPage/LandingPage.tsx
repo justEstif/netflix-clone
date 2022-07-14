@@ -1,10 +1,11 @@
 import { useState, FunctionComponent } from "react";
 import { FaAngleRight } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PageRoutes from "../../constants/Page.Routes";
 import { userEmailExistsInDB } from "../../services/firebase";
+import LandingNavBar from "../../components/LandingNavBar"
 
-interface LandingPageProps {}
+interface LandingPageProps { }
 
 // ! if not navigate to the sign up page
 const LandingPage: FunctionComponent<LandingPageProps> = () => {
@@ -29,20 +30,7 @@ const LandingPage: FunctionComponent<LandingPageProps> = () => {
       <div className="top-0 left-0 fixed w-full h-screen bg-black/40">
         <div className="h-full w-full grid grid-rows-navbar-content text-white container mx-auto p-4">
 
-          <nav className="flex justify-between">
-            <button className="text-red-700 text-6xl uppercase tracking-wider font-bebas">
-              <Link to={PageRoutes.Landing}>Netflix</Link>
-            </button>
-
-            <div className="flex items-center gap-5 text-xl">
-              <button className="bg-red-700 py-3 px-7 rounded-md hover:bg-red-800">
-                <Link to={PageRoutes.SignIn} state={{ userEmail: null }}>
-                  Sign in
-                </Link>
-              </button>
-            </div>
-          </nav>
-
+          <LandingNavBar />
           <section className="flex items-center justify-center relative">
             <div className="text-center flex flex-col absolute top-20">
               <div className="flex flex-col max-w-2xl gap-10 mb-10">
