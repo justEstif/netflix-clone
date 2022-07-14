@@ -12,12 +12,12 @@ type Movie = {
 };
 
 const Hero = () => {
-  const [movies, setMovies] = useState<[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [movie, setMovie] = useState<Movie>();
-
+  //
   const truncateString = (str: string | undefined) => {
     if (typeof str === "string") {
-      return `${str?.split(" ", 20).join(" ")} ...`;
+      return `${str?.split(" ", 30).join(" ")} ...`;
     }
   };
 
