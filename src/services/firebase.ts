@@ -1,5 +1,14 @@
 import { firebase } from "../lib/firebase.config";
-import { collection, query, getDocs, where, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import {
+  collection,
+  query,
+  getDocs,
+  where,
+  doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -60,7 +69,6 @@ export const signUpUser = async (userEmail: string, password: string) => {
   }
 };
 
-
 export const getUserDoc = async (userEmail: string) => {
   const usersRef = collection(db, "users");
   const q = query(usersRef, where("userEmail", "==", userEmail));
@@ -69,15 +77,16 @@ export const getUserDoc = async (userEmail: string) => {
     ...item.data(),
     docId: item.id,
   }));
-  return userDocArr[0]
+  return userDocArr[0];
 };
 
-export const handleMovieLike = async (userDocId: string, movieId: number | undefined, isLiked: boolean) => {
-
-  const userDoc = doc(db, "users", userDocId)
+export const handleMovieLike = async (
+  userDocId: string,
+  movieId: number | undefined,
+  isLiked: boolean
+) => {
+  const userDoc = doc(db, "users", userDocId);
   return updateDoc(userDoc, {
-    liked: isLiked
-      ? arrayRemove(movieId)
-      : arrayUnion(movieId)
-  })
-}
+    liked: isLiked ? arrayRemove(movieId) : arrayUnion(movieId),
+  });
+};
