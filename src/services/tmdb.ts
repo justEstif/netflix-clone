@@ -36,3 +36,9 @@ export const movieGenres: { id: number; genre: string }[] = [
   { id: 10752, genre: "War" },
   { id: 10751, genre: "Family" },
 ];
+export const getMovieInfo = async (movieId: number) => {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=en-US`;
+  const response = await fetch(url)
+  const responseJson = await response.json()
+  return responseJson
+}
