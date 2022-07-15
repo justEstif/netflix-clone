@@ -14,6 +14,7 @@ const LandingPage = lazy(() => import("./pages/LandingPage/LandingPage"));
 const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage"));
 const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const AccountPage = lazy(() => import("./pages/AccountPage/AccountPage"));
 
 const App: FunctionComponent = () => {
   const { user } = useAuthListener();
@@ -26,6 +27,7 @@ const App: FunctionComponent = () => {
             <Route path={PageRoutes.SignUp} element={<SignUpPage />} />
             <Route path={PageRoutes.SignIn} element={<SignInPage />} />
             <Route path={PageRoutes.Home} element={<HomePage />} />
+            <Route path={PageRoutes.Account} element={<AccountPage />} />
           </Routes>
         </Suspense>
       </Router>
