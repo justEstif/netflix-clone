@@ -1,6 +1,9 @@
 import { firebase } from "../lib/firebase.config";
 import { collection, query, getDocs, where } from "firebase/firestore";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { AuthError } from "firebase/auth";
 
 const { db, auth } = firebase;
@@ -35,7 +38,7 @@ export const signInUser = async (userEmail: string, password: string) => {
 };
 
 // TODO function to getUserDataByUserId -> from the DB
-  // get the docId
+// get the docId
 export const signUpUser = async (userEmail: string, password: string) => {
   try {
     const { user } = await createUserWithEmailAndPassword(
@@ -47,7 +50,7 @@ export const signUpUser = async (userEmail: string, password: string) => {
     return {
       response: true,
       message: user?.uid,
-    }
+    };
   } catch (err) {
     const typedError = err as AuthError;
     return {
@@ -55,5 +58,19 @@ export const signUpUser = async (userEmail: string, password: string) => {
       message: typedError.code,
     };
   }
-}
+};
 
+export const getUserInDb = async (userEmail: string) => {
+  const usersRef = collection(db, "users");
+  const q = query(usersRef, where("userEmail", "==", userEmail));
+  const querySnapshot = await getDocs(q);
+  const user = querySnapshot.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+  return user;
+};
+
+const getAuthUserDocId = async (userEmail: string | null) => {
+  if (userEmail) return await getUserInDb(userEmail);
+};
