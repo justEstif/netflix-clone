@@ -51,3 +51,50 @@ create new grid config
   />
 </div>
 ```
+```js
+  useEffect(() => {
+    const getUser = async () => {
+      if (user?.user.email) {
+        const response = await getUserInDb(user?.user.email)
+        setActiveUser(response)
+        console.log(response)
+      }
+    }
+    getUser()
+  }, [user])
+
+```
+```js
+
+    console.log(user.user.userDb[0])
+
+```
+```js
+
+  const user = useContext(UserContext);
+  useEffect(() => {
+    const saveShow = async (userEmail: string | null) => {
+      if (userEmail) {
+        const doc = await getUserDoc(userEmail);
+        console.log(doc)
+      }
+    }
+    // saveShow(user.user.email)
+    if (user?.user) {
+      saveShow(user.user.email)
+    }
+  }, [])
+
+```
+*To get the doc from the usercontext *
+```
+// console.log(user.user.userDoc)
+```
+
+```js
+// TODO remove this like
+const handleClickTest = async () => {
+  const result = await getMovieInfo(movie?.id)
+  console.log(result)
+}
+```
