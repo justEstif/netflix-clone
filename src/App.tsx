@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  Fragment,
-  lazy,
-  Suspense,
-  useContext,
-} from "react";
+import React, { FunctionComponent, Fragment, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PageRoutes from "./constants/Page.Routes";
 import UserContext from "./context/UserContext";
@@ -23,6 +17,10 @@ const App: FunctionComponent = () => {
       <Router>
         <Suspense fallback={<Fragment></Fragment>}>
           <Routes>
+            {/**
+             * // TODO: create protected routes around the HomePage and AccountPage
+             * // TODO: create a redirect to HomePage is user is logged in from the sign in, sign up and landing page
+             **/}
             <Route path={PageRoutes.Landing} element={<LandingPage />} />
             <Route path={PageRoutes.SignUp} element={<SignUpPage />} />
             <Route path={PageRoutes.SignIn} element={<SignInPage />} />
