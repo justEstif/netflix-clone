@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import React, { Link } from "react-router-dom";
 import PageRoutes from "../constants/Page.Routes";
 import { signOut, Auth } from "firebase/auth";
 import FirebaseContext from "../context/FirebaseContext";
@@ -14,9 +14,7 @@ const UserNavBar = () => {
       </button>
       <div className="flex items-center gap-5 text-lg text-white">
         <button className="bg-red-700 py-2 px-4  hover:bg-red-800">
-          <Link to={PageRoutes.Account} state={{ userEmail: null }}>
-            Account
-          </Link>
+          <Link to={PageRoutes.Account}>Account</Link>
         </button>
 
         <button
