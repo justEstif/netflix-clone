@@ -1,10 +1,11 @@
+import React from "react";
 import { describe, expect, it } from "vitest";
-import Home from "./Home";
+import HomePage from "./HomePage";
 import { render, screen, userEvent } from "../../utils/test-utils";
 
 describe("Simple working test", () => {
   it("the title is visible", () => {
-    render(<Home />);
+    render(<HomePage />);
     expect(screen.getByText(/HomePage/i)).toBeInTheDocument();
   });
 });

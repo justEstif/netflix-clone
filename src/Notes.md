@@ -41,3 +41,13 @@ purpose:
 ## Home Page
 
 create new grid config
+
+```js
+<div>
+  <img
+    className="w-full h-full"
+    src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+    alt={movie?.title}
+  />
+</div>
+```
