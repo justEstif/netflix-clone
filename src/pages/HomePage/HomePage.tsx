@@ -1,16 +1,21 @@
-import { FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import Hero from "../../components/Hero";
+import Row from "../../components/Row";
+import { requests } from "../../services/tmdb";
 
-interface HomeProps {}
-
-const Home: FunctionComponent<HomeProps> = () => {
-
+const HomePage: FunctionComponent = () => {
   return (
-    <div className="h-full w-full bg-black grid grid-rows-hero-content">
+    <div className="h-full w-full flex flex-col bg-black">
       <Hero />
-      <div className="text-5xl text-white">Hello</div>
+      <section className="w-full mx-auto px-4 flex flex-col gap-7">
+        <Row title={"Popular"} fetchUrl={requests.requestPopular} />
+        <Row title={"Top Rated"} fetchUrl={requests.requestTopRated} />
+        <Row title={"Trending"} fetchUrl={requests.requestTrending} />
+        <Row title={"Horror"} fetchUrl={requests.requestHorror} />
+        <Row title={"Upcoming"} fetchUrl={requests.requestUpcoming} />
+      </section>
     </div>
   );
 };
 
-export default Home;
+export default HomePage;
