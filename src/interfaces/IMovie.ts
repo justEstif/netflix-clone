@@ -6,4 +6,5 @@ export default interface IMovie {
   vote_average?: string;
   genre_ids?: number[];
   poster_path?: string;
+  id?: number
 }
