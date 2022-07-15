@@ -1,9 +1,6 @@
-import { createContext } from "react"
-import { User } from "firebase/auth"
+import { createContext } from "react";
+import { IUser } from "../interfaces/IUser";
 
-interface IUserContext {
-  user: User
-}
-const UserContext = createContext<null | IUserContext>(null)
+const UserContext = createContext<null | IUser>(null);
 
-export default UserContext
+export default UserContext;
