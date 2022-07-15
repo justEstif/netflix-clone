@@ -9,11 +9,11 @@ const UserNavBar = () => {
         <Link to={PageRoutes.Landing}>Netflix</Link>
       </button>
       <div className="flex items-center gap-5 text-lg text-white">
-        <button className="bg-red-700 py-2 px-4  hover:bg-red-800">
-          <Link to={PageRoutes.SignIn} state={{ userEmail: null }}>
+        <Link to={PageRoutes.SignIn} state={{ userEmail: null }}>
+          <button className="bg-red-700 py-2 px-4  hover:bg-red-800">
             Sign in
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     </nav>
   );
