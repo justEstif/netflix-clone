@@ -1,5 +1,5 @@
 import { firebase } from "../lib/firebase.config";
-import { collection, query, getDocs, where } from "firebase/firestore";
+import { collection, query, getDocs, where, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -60,17 +60,24 @@ export const signUpUser = async (userEmail: string, password: string) => {
   }
 };
 
-export const getUserInDb = async (userEmail: string) => {
+
+export const getUserDoc = async (userEmail: string) => {
   const usersRef = collection(db, "users");
   const q = query(usersRef, where("userEmail", "==", userEmail));
   const querySnapshot = await getDocs(q);
-  const user = querySnapshot.docs.map((item) => ({
+  const userDocArr = querySnapshot.docs.map((item) => ({
     ...item.data(),
     docId: item.id,
   }));
-  return user;
+  return userDocArr[0]
 };
 
-const getAuthUserDocId = async (userEmail: string | null) => {
-  if (userEmail) return await getUserInDb(userEmail);
-};
+export const handleMovieLike = async (userDocId: string, movieId: number | undefined, isLiked: boolean) => {
+
+  const userDoc = doc(db, "users", userDocId)
+  return updateDoc(userDoc, {
+    liked: isLiked
+      ? arrayRemove(movieId)
+      : arrayUnion(movieId)
+  })
+}
