@@ -24,12 +24,12 @@ const LandingPage: FunctionComponent = () => {
   };
 
   return (
-    <div className="top-0 left-0 fixed w-full h-full bg-netflix-background bg-cover bg-center">
-      <div className="h-full w-full grid grid-rows-navbar-content text-white container mx-auto p-4  ">
+    <div className="fixed top-0 left-0 w-full h-full bg-center bg-cover bg-netflix-background">
+      <div className="container grid p-4 mx-auto w-full h-full text-white grid-rows-navbar-content">
         <LandingNavBar />
-        <section className="flex items-center justify-center relative">
-          <div className="text-center flex flex-col absolute top-20">
-            <div className="flex flex-col max-w-2xl gap-10 mb-10">
+        <section className="flex relative justify-center items-center">
+          <div className="flex absolute top-20 flex-col text-center">
+            <div className="flex flex-col gap-10 mb-10 max-w-2xl">
               <p className="text-6xl font-extrabold">
                 Unlimited movies, TV shows, and more.
               </p>
@@ -43,17 +43,18 @@ const LandingPage: FunctionComponent = () => {
 
             <form
               onSubmit={(e) => handleSubmit(e)}
-              className="flex justify-center items-center">
+              className="flex justify-center items-center"
+            >
               <input
                 placeholder="Email address"
                 type="email"
                 required
-                className="py-10 text-black flex-grow px-3 focus:outline-none duration-500 text-xl"
+                className="flex-grow py-10 px-3 text-xl text-black duration-500 focus:outline-none"
                 value={userEmail}
                 onChange={({ target }) => setUserEmail(target.value)}
               />
 
-              <button type="submit" className="text-xl bg-red-700 p-10 flex">
+              <button type="submit" className="flex p-10 text-xl bg-red-700">
                 <p>Get Started</p> <FaAngleRight />
               </button>
             </form>

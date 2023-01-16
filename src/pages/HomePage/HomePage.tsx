@@ -1,13 +1,13 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import Hero from "../../components/Hero";
 import Row from "../../components/Row";
 import { requests } from "../../services/tmdb";
 
-const HomePage: FunctionComponent = () => {
+const HomePage = () => {
   return (
-    <div className="h-full w-full flex flex-col bg-black">
+    <div className="flex flex-col w-full h-full bg-black">
       <Hero />
-      <section className="w-full mx-auto px-4 flex flex-col gap-7">
+      <section className="flex flex-col gap-7 px-4 mx-auto w-full">
         <Row title={"Popular"} fetchUrl={requests.requestPopular} />
         <Row title={"Top Rated"} fetchUrl={requests.requestTopRated} />
         <Row title={"Trending"} fetchUrl={requests.requestTrending} />
